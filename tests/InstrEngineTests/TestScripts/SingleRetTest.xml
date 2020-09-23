@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InstrumentationTestScript>
+  <InstrumentMethod>
+    <ModuleName>SingleRetTests_Release_x64.exe</ModuleName>
+    <MethodName>SingleRetTest</MethodName>
+    <Instructions SingleRet="true">
+      <Instruction>
+        <Opcode>nop</Opcode>
+        <Offset>0</Offset>
+      </Instruction>
+    </Instructions>
+  </InstrumentMethod>
+</InstrumentationTestScript>

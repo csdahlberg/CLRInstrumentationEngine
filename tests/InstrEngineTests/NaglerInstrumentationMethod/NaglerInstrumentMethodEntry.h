@@ -145,6 +145,7 @@ private:
     CComBSTR m_bstrMethodName;
     BOOL m_bIsRejit;
     BOOL m_isReplacement;
+    BOOL m_isSingleRet;
 
     vector<shared_ptr<CInstrumentInstruction>> m_instructions;
     vector<COR_IL_MAP> m_baselineMap;
@@ -156,7 +157,8 @@ public:
         m_bstrModuleName(bstrModuleName),
         m_bstrMethodName(bstrMethodName),
         m_bIsRejit(isRejit),
-        m_isReplacement(FALSE)
+        m_isReplacement(FALSE),
+        m_isSingleRet(FALSE)
     {
     }
 
@@ -224,6 +226,16 @@ public:
     BOOL IsReplacement()
     {
         return m_isReplacement;
+    }
+
+    void SetSingleRet(BOOL isSingleRet)
+    {
+        m_isSingleRet = isSingleRet;
+    }
+
+    BOOL IsSingleRet()
+    {
+        return m_isSingleRet;
     }
 
     std::shared_ptr<CInstrumentMethodPointTo>& GetPointTo()

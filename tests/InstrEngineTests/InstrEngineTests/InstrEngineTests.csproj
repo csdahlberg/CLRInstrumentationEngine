@@ -53,6 +53,7 @@
     <EmbeddedResource Include="EmbeddedResources\HttpMethodTests.cs" />
     <EmbeddedResource Include="EmbeddedResources\DynamicCodeTests.cs" />
     <EmbeddedResource Include="EmbeddedResources\InstrumentationMethodLoggingTests.cs" />
+    <EmbeddedResource Include="EmbeddedResources\SingleRetTests.cs" />
     <Compile Include="PathUtils.cs" />
     <Compile Include="RuntimeExceptionCallbacks.cs" />
     <Compile Include="TestConstants.cs" />
@@ -217,6 +218,10 @@
     </Content>
     <Content Include="..\Baselines\RuntimeExceptionCallbacks.xml">
       <Link>Baselines\RuntimeExceptionCallbacks.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Baselines\SingleRetTest.xml">
+      <Link>Baselines\SingleRetTest.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\Baselines\TinyMethodTest.xml">
@@ -389,6 +394,10 @@
     </Content>
     <Content Include="..\TestScripts\RuntimeExceptionCallbacks.xml">
       <Link>TestScripts\RuntimeExceptionCallbacks.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\TestScripts\SingleRetTest.xml">
+      <Link>TestScripts\SingleRetTest.xml</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\TestScripts\TinyMethodTest.xml">

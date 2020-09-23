@@ -81,6 +81,13 @@ namespace InstrEngineTests
 
         [TestMethod]
         [Timeout(TestConstants.TestTimeout)]
+        public void SingleRetTest()
+        {
+            ProfilerHelpers.LaunchAppAndCompareResult("SingleRetTests_Release_x64.exe", "SingleRetTest.xml");
+        }
+
+        [TestMethod]
+        [Timeout(TestConstants.TestTimeout)]
         public void TinyMethodTest()
         {
             ProfilerHelpers.LaunchAppAndCompareResult("BasicManagedTests2_Release_x64.exe", "TinyMethodTest.xml");

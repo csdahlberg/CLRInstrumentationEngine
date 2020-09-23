@@ -194,6 +194,7 @@ HRESULT CInstrumentationMethod::ProcessInstrumentMethodNode(IXMLDOMNode* pNode)
     vector<CLocalType> locals;
     vector<COR_IL_MAP> corIlMap;
     BOOL isReplacement = FALSE;
+    BOOL isSingleRet = FALSE;
     shared_ptr<CInstrumentMethodPointTo> spPointTo(nullptr);
 
     for (long i = 0; i < cChildren; i++)
@@ -227,10 +228,14 @@ HRESULT CInstrumentationMethod::ProcessInstrumentMethodNode(IXMLDOMNode* pNode)
             CComPtr<IXMLDOMNode> pAttrValue;
             CComPtr<IXMLDOMNamedNodeMap> attributes;
             pChildNode->get_attributes(&attributes);
+
             CComPtr<IXMLDOMNode> pBaseLine;
             attributes->getNamedItem(L"Baseline", &pBaseLine);
-
             isReplacement = pBaseLine != nullptr;
+
+            CComPtr<IXMLDOMNode> pSingleRet;
+            attributes->getNamedItem(L"SingleRet", &pSingleRet);
+            isSingleRet = pSingleRet != nullptr;
 
             ProcessInstructionNodes(pChildNode, instructions, isReplacement != 0);
         }
@@ -299,6 +304,7 @@ HRESULT CInstrumentationMethod::ProcessInstrumentMethodNode(IXMLDOMNode* pNode)
         pMethod->AddCorILMap(corIlMap);
     }
     pMethod->SetReplacement(isReplacement);
+    pMethod->SetSingleRet(isSingleRet);
     m_instrumentMethodEntries.push_back(pMethod);
     pMethod->AddLocals(locals);
     return S_OK;
@@ -995,6 +1001,15 @@ HRESULT CInstrumentationMethod::InstrumentMethod(_In_ IMethodInfo* pMethodInfo, 
         CComPtr<IInstructionFactory> pInstructionFactory;
         IfFailRet(pMethodInfo->GetInstructionFactory(&pInstructionFactory));
 
+        if (pMethodEntry->IsSingleRet())
+        {
+            CComPtr<ISingleRetDefaultInstrumentation> pSingleRet;
+            IfFailRet(pMethodInfo->GetSingleRetDefaultInstrumentation(&pSingleRet));
+
+            IfFailRet(pSingleRet->Initialize(pInstructionGraph));
+            IfFailRet(pSingleRet->ApplySingleRetDefaultInstrumentation());
+        }
+
         for (shared_ptr<CInstrumentInstruction> pInstruction : instructions)
         {
             ILOrdinalOpcode opcode = pInstruction->GetOpcode();
@@ -1103,7 +1118,14 @@ HRESULT CInstrumentationMethod::InstrumentMethod(_In_ IMethodInfo* pMethodInfo, 
 
                     if (instrType == InsertBefore)
                     {
-                        IfFailRet(pInstructionGraph->InsertBeforeAndRetargetOffsets(pOldInstruction, pNewInstruction));
+                        if (pMethodEntry->IsSingleRet())
+                        {
+                            IfFailRet(pInstructionGraph->InsertBefore(pOldInstruction, pNewInstruction));
+                        }
+                        else
+                        {
+                            IfFailRet(pInstructionGraph->InsertBeforeAndRetargetOffsets(pOldInstruction, pNewInstruction));
+                        }
                     }
                     else if (instrType == InsertAfter)
                     {
