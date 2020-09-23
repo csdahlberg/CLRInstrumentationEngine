@@ -1,0 +1,16 @@
+{
+    "profiles": {
+        "SingleReturnRepro": {
+            "commandName": "Project",
+            "environmentVariables": {
+                "CORECLR_PROFILER_PATH_64": "$(SolutionDir)..\\..\\bin\\$(Configuration)\\x64\\MicrosoftInstrumentationEngine_x64.dll",
+                "CORECLR_PROFILER_PATH_32": "$(SolutionDir)..\\..\\bin\\$(Configuration)\\x86\\MicrosoftInstrumentationEngine_x86.dll",
+                "CORECLR_ENABLE_PROFILING": "1",
+                "CORECLR_PROFILER": "{324F817A-7420-4E6D-B3C1-143FBED6D855}",
+                "MicrosoftInstrumentationEngine_ConfigPath32_SingleRet32Config": "$(SolutionDir)Win32\\$(Configuration)\\SingleReturnRepro.config",
+                "MicrosoftInstrumentationEngine_ConfigPath64_SingleRet64Config": "$(SolutionDir)x64\\$(Configuration)\\SingleReturnRepro.config",
+                "MicrosoftInstrumentationEngine_DisableCodeSignatureValidation": "1"
+            }
+        }
+    }
+}
