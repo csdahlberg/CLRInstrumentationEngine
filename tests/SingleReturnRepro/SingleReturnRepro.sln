@@ -10,6 +10,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SingleReturnRepro", "Single
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SingleReturnRepro.Profiler", "SingleReturnRepro.Profiler\SingleReturnRepro.Profiler.vcxproj", "{D87A1A4B-178A-42FE-B5D7-6902D87D4CB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleReturnReproFx", "SingleReturnReproFx\SingleReturnReproFx.csproj", "{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,18 @@ Global
 		{D87A1A4B-178A-42FE-B5D7-6902D87D4CB3}.Release|x64.Build.0 = Release|x64
 		{D87A1A4B-178A-42FE-B5D7-6902D87D4CB3}.Release|x86.ActiveCfg = Release|Win32
 		{D87A1A4B-178A-42FE-B5D7-6902D87D4CB3}.Release|x86.Build.0 = Release|Win32
+		{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}.Debug|x64.Build.0 = Debug|Any CPU
+		{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}.Debug|x86.Build.0 = Debug|Any CPU
+		{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}.Release|x64.ActiveCfg = Release|Any CPU
+		{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}.Release|x64.Build.0 = Release|Any CPU
+		{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}.Release|x86.ActiveCfg = Release|Any CPU
+		{188C1A60-A550-4DE6-B5B5-08AA31FD1F54}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
